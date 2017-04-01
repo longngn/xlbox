@@ -1,0 +1,33 @@
+.ownedContainer, .unownedContainer {
+    display: flex;
+    align-items: flex-end;
+}
+
+.ownedContainer {
+    flex-direction: row-reverse;
+}
+
+img {
+    object-fit: cover;
+}
+
+.ownedMessages, .unownedMessages {
+    display: flex;
+    flex-direction: column;
+}
+
+.ownedMessages {
+    align-items: flex-end;
+    margin-right: 0.3em;
+}
+
+.unownedMessages {
+    align-items: flex-start;
+    margin-left: 0.3em;
+}
+
+.userName {
+    margin: 0.5em 1em;
+    font-size: 0.8em;
+    color: '#bbb';
+}

@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.chatbox {
+    flex: 0 1 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 700px) {
+    .chatbox {
+        margin: 20px
+    }
+}

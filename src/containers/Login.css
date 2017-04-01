@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+}
+
+.button {
+    flex: 1 1 auto;
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}

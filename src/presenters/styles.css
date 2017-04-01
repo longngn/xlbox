@@ -1,0 +1,12 @@
+.messageBubble {
+    border-radius: 0.8em;
+    padding: 0.6em;
+    margin: 0.25em;
+}
+
+.messageText {
+    margin: 0;
+    word-wrap: break-word;
+    max-width: 400px; /* this is a temporary fix for text overflowing */
+}
+
