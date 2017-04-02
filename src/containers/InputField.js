@@ -11,7 +11,12 @@ import * as storage from '../config/storage';
 export default class InputField extends React.Component {
     state = {
         message: '',
-        alertFileIsTooLarge: false
+        alertFileIsTooLarge: false,
+        alertAnotherFileIsBeingUploaded: false
+    }
+    constructor(props) {
+        super(props)
+        this.upload = storage.SingleUploadThread()
     }
 
     sendMessage = () => {
@@ -26,11 +31,19 @@ export default class InputField extends React.Component {
             this.sendMessage()           
         }
     }
-    handleFileSelected = (file) => {
+    handleFileSelected = async (file) => {
         if (file.size > storage.MAXIMUM_FILE_SIZE) {
             this.setState({ alertFileIsTooLarge: true })
             return
         }
+        if (this.upload.isUploading) {
+            this.setState({ alertAnotherFileIsBeingUploaded: true })
+            return
+        }
+
+        this.upload.onProgress(progress => console.log(progress))
+        const downloadURL = await this.upload.upFile(file)
+        console.log(downloadURL);
     }
 
     render() {
@@ -60,6 +73,17 @@ export default class InputField extends React.Component {
                     onRequestClose={() => this.setState({ alertFileIsTooLarge: false })}
                 >
                     The file you have chosen is too large. The maximum file size is 10MB.
+                </Dialog>
+                <Dialog
+                    actions={<FlatButton 
+                        label='Ok' 
+                        onTouchTap={() => this.setState({ alertAnotherFileIsBeingUploaded: false })} 
+                        primary={true}
+                    />}
+                    open={this.state.alertAnotherFileIsBeingUploaded}
+                    onRequestClose={() => this.setState({ alertAnotherFileIsBeingUploaded: false })}
+                >
+                    Another file is being uploaded.
                 </Dialog>
             </div>
         )

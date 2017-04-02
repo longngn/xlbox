@@ -11,3 +11,5 @@ export const Text = ({ children, isOwned }) => isOwned?
         backgroundColor={colors.unownedMessage}
         color='#000'
     >{children}</MessageBubble>
+
+export const File = ({ })

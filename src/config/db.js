@@ -2,7 +2,7 @@ import firebaseApp from './firebase'
 
 const database = firebaseApp.database()
 const messagesRef = database.ref('messages')
-const messagesByTimeRef = database.ref('messages').orderByChild('timeStamp')
+const messagesByTimeRef = database.ref('messages').orderByChild('timestamp')
 const usersRef = database.ref('users')
 
 export const messageTypes = {
@@ -15,15 +15,13 @@ export const addMessage = (type, content, senderId) => {
     if (!content) return // if message is an empty string
     if (!/\S/.test(content)) return // if message contains only whitespaces
     
-    const timeStamp = Date.now()
     const key = messagesRef.push().key
     messagesRef.update({
         [key]: {
             id: key,
             type,
             content,
-            senderId,
-            timeStamp
+            senderId
         }
     })
 }

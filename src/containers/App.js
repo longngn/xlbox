@@ -40,9 +40,9 @@ export default class App extends React.Component {
                         currentUser={user}
                         getUser={ id => this.state.allUsersById[id] } 
                     />
-                    <Divider />
+                    <Divider style={{ flex: '0 0 auto' }}/>
                     {user? <InputField user={user}/> : <Login />}
-                    <Divider />
+                    <Divider style={{ flex: '0 0 auto' }}/>
                     <Menu isUserLoggedIn={Boolean(user)} />
                 </Pager>
             </div>
