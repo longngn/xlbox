@@ -1,17 +1,17 @@
-.messageBubble {
-    border-radius: 0.8em;
+.bubble {
+    border-radius: 0.9em;
     padding: 0.6em;
     margin: 0.25em;
 }
 
-.messageText {
+.text {
     margin: 0;
     word-wrap: break-word;
     max-width: 400px;
 }
 
 @media (max-width: 700px) {
-    .messageText {
+    .text {
         max-width: 60vw;
     }
 }

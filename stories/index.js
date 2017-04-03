@@ -7,7 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import TypingField from '../src/presenters/TypingField'
 import MessageBubble from '../src/presenters/MessageBubble'
 import LoginButton from '../src/presenters/LoginButton'
-import MessageGroup from '../src/presenters/MessageGroup'
+import Message from '../src/presenters/Message'
 import Notification from '../src/presenters/Notification'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
@@ -38,13 +38,13 @@ storiesOf('LoginButton', module)
 
 const mockUser = {displayName: "Long Ke", avatarURL: "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/17626272_1849406995321399_8254827245229704301_n.jpg?oh=91169b8356bb3ad5c2db73d352dc69a4&oe=59930C17", profileURL: "https://www.facebook.com/1851163488479083"}
 
-storiesOf('MessageGroup', module)
-    .add('Owned', () => <MessageGroup
+storiesOf('Message', module)
+    .add('Owned', () => <Message
         message='Lorem ipsum dolor sit amet.'
         user={mockUser}
         isOwned={true}
     />)
-    .add('Unowned', () => <MessageGroup
+    .add('Unowned', () => <Message
         message='Lorem ipsum dolor sit amet.'
         user={mockUser}
         isOwned={false}

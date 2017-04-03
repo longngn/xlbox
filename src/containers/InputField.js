@@ -1,12 +1,17 @@
 import React from 'react'
-import InputButtons from './InputButtons'
+import InputButtons from '../presenters/InputButtons'
 import TextField from 'material-ui/TextField'
+import FlatButton from 'material-ui/FlatButton'
+import Dialog from 'material-ui/Dialog'
+
 import styles from './InputField.css'
 import * as db from '../config/db';
+import * as storage from '../config/storage';
 
 export default class InputField extends React.Component {
     state = {
-        message: ''
+        message: '',
+        alertFileIsTooLarge: false
     }
 
     sendMessage = () => {
@@ -15,12 +20,19 @@ export default class InputField extends React.Component {
         this.setState({ message: '' })
     }
     handleKeyDown = (event) => {
-        if (event.keyCode === 13 && !event.shiftKey) {
+        if (event.keyCode === 13 && !event.shiftKey) {  // if enter with no shift get pressed 
             event.preventDefault()
             event.stopPropagation()
             this.sendMessage()           
         }
     }
+    handleFileSelected = (file) => {
+        if (file.size > storage.MAXIMUM_FILE_SIZE) {
+            this.setState({ alertFileIsTooLarge: true })
+            return
+        }
+    }
+
     render() {
         return (
             <div className={styles.container}>
@@ -34,8 +46,21 @@ export default class InputField extends React.Component {
                     value={this.state.message}
                     fullWidth={true}
                     rowsMax={8}
+                    autoFocus={true}
                 />
-                <InputButtons onSend={this.sendMessage} />
+                <InputButtons onSend={this.sendMessage} onFileSelected={this.handleFileSelected} />
+
+                <Dialog
+                    actions={<FlatButton 
+                        label='Ok' 
+                        onTouchTap={() => this.setState({ alertFileIsTooLarge: false })} 
+                        primary={true}
+                    />}
+                    open={this.state.alertFileIsTooLarge}
+                    onRequestClose={() => this.setState({ alertFileIsTooLarge: false })}
+                >
+                    The file you have chosen is too large. The maximum file size is 10MB.
+                </Dialog>
             </div>
         )
     }

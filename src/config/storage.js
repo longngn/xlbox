@@ -1,0 +1,1 @@
+export const MAXIMUM_FILE_SIZE = 10485760 // equal to 10MB

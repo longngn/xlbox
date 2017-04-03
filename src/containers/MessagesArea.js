@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MessageGroup from '../presenters/MessageGroup'
+import Message from '../presenters/Message'
 import Notification from '../presenters/Notification'
 import styles from './MessagesArea.css'
 
@@ -21,8 +21,8 @@ export default class MessagesArea extends React.Component {
     }
 
     scrollToBottom = () => {
-        const node = ReactDOM.findDOMNode(this.bottomMostNodeToScrollInto)
-        node.scrollIntoView()
+        const element = ReactDOM.findDOMNode(this.bottomMostNodeToScrollInto)
+        element.scrollIntoView()
     }
     renderMessages = (message) => {
         const sender = this.props.getUser(message.senderId)
@@ -39,7 +39,7 @@ export default class MessagesArea extends React.Component {
                 const isOwned = currentUser ?
                     message.senderId === currentUser.id :
                     false        
-                return <MessageGroup
+                return <Message
                     key={message.id}
                     message={message.content}
                     user={sender}

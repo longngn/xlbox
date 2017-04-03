@@ -32,7 +32,6 @@ export const onMessagesDataChange = (handler) => {
     messagesByTimeRef.on('value', snapshot => {
         const messages = []
         snapshot.forEach(messageSnapshot => { messages.push(messageSnapshot.val()) })
-        console.log(messages);
         handler(messages)
     })
 }

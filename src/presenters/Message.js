@@ -1,8 +1,7 @@
 import React from 'react'
-import MessageBubble from './MessageBubble'
 import Avatar from 'material-ui/Avatar'
-import styles from './MessageGroup.css'
-import colors from '../config/colors'
+import * as MessageContent from './MessageContent';
+import styles from './Message.css'
 
 export default ({ message, user, isOwned }) => {
     return isOwned ? (
@@ -10,12 +9,9 @@ export default ({ message, user, isOwned }) => {
             <a href={user.profileURL}>
                 <Avatar src={user.avatarURL} />
             </a>
-            <div className={styles.ownedMessages}>
+            <div className={styles.ownedMessage}>
                 <p className={styles.userName}>{user.displayName}</p>
-                <MessageBubble 
-                    backgroundColor={colors.ownedMessage}
-                    color='#fff'
-                >{message}</MessageBubble>
+                <MessageContent.Text isOwned={isOwned}>{message}</MessageContent.Text>
             </div>
         </div>
     ) : (
@@ -23,12 +19,9 @@ export default ({ message, user, isOwned }) => {
             <a href={user.profileURL}>
                 <Avatar src={user.avatarURL} />
             </a>
-            <div className={styles.unownedMessages}>
+            <div className={styles.unownedMessage}>
                 <p className={styles.userName}>{user.displayName}</p>
-                <MessageBubble 
-                    backgroundColor={colors.unownedMessage}
-                    color='#000'
-                >{message}</MessageBubble>
+                <MessageContent.Text isOwned={isOwned}>{message}</MessageContent.Text>
             </div>
         </div>
     )

@@ -11,17 +11,17 @@ img {
     object-fit: cover;
 }
 
-.ownedMessages, .unownedMessages {
+.ownedMessage, .unownedMessage {
     display: flex;
     flex-direction: column;
 }
 
-.ownedMessages {
+.ownedMessage {
     align-items: flex-end;
     margin-right: 0.3em;
 }
 
-.unownedMessages {
+.unownedMessage {
     align-items: flex-start;
     margin-left: 0.3em;
 }

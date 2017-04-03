@@ -22,7 +22,7 @@ export default class App extends React.Component {
                 db.updateUser(user)
                 db.addMessage(
                     db.messageTypes.NOTIFICATION,
-                    ' has joined the conversation.',
+                    ' has joined the conversation',
                     user.id
                 )
             }
