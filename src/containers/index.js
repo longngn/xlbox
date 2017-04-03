@@ -8,6 +8,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 const customMuiTheme = getMuiTheme({
+    palette: {
+        primary1Color: indigo500
+    },
     flatButton: {
         primaryTextColor: indigo500
     }

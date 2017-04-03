@@ -26,6 +26,7 @@ export const SingleUploadThread = () => {
                 error => reject(error), 
                 () => {
                     this.isUploading = false
+                    progressHandler(null)
                     resolve(uploadTask.snapshot.downloadURL)
                 })
             })

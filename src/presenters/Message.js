@@ -3,13 +3,15 @@ import Avatar from 'material-ui/Avatar'
 import * as MessageContent from './MessageContent';
 import styles from './Message.css'
 
+import { messageTypes } from '../config/db';
+
 export default ({ message, user, isOwned }) => {
     let messageContent 
     switch (message.type) {
-        case 'TEXT':
+        case messageTypes.TEXT:
             messageContent = <MessageContent.Text isOwned={isOwned}>{message.content}</MessageContent.Text>
             break
-        case 'FILE':
+        case messageTypes.FILE:
             messageContent = <MessageContent.File isOwned={isOwned} file={message.content} />
             break
         default:
