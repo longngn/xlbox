@@ -43,7 +43,15 @@ export default class InputField extends React.Component {
 
         this.upload.onProgress(progress => console.log(progress))
         const downloadURL = await this.upload.upFile(file)
-        console.log(downloadURL);
+        db.addMessage(
+            db.messageTypes.FILE,
+            {
+                name: file.name,
+                downloadURL,
+                type: file.type
+            },
+            this.props.user.id
+        )
     }
 
     render() {

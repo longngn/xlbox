@@ -1,14 +1,11 @@
-var functions = require('firebase-functions');
+const functions = require('firebase-functions');
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// })
+const admin = require('firebase-admin');
+admin.initializeApp(functions.config().firebase);
 
-exports.addTimestamp = functions.database.ref('messages/{messageId}/content')
-    .onWrite(event => {
-        return event.data.ref.parent.child('timestamp').set(Date.now())
+exports.getTimestamp = functions.https.onRequest((req, res) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.status(200).json({
+        timestamp: Date.now()
     })
-    
+})

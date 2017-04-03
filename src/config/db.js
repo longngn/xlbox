@@ -1,4 +1,4 @@
-import firebaseApp from './firebase'
+import firebaseApp, { getServerTime } from './firebase'
 
 const database = firebaseApp.database()
 const messagesRef = database.ref('messages')
@@ -11,17 +11,19 @@ export const messageTypes = {
     NOTIFICATION: 'NOTIFICATION'
 }
 
-export const addMessage = (type, content, senderId) => {
+export const addMessage = async (type, content, senderId) => {
     if (!content) return // if message is an empty string
     if (!/\S/.test(content)) return // if message contains only whitespaces
     
     const key = messagesRef.push().key
+    const timestamp = await getServerTime()
     messagesRef.update({
         [key]: {
             id: key,
             type,
             content,
-            senderId
+            senderId,
+            timestamp
         }
     })
 }

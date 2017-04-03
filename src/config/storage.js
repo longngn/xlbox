@@ -1,4 +1,5 @@
 import firebaseApp from './firebase'
+import cuid from 'cuid'
 
 const storageRef = firebaseApp.storage().ref()
 
@@ -13,7 +14,8 @@ export const SingleUploadThread = () => {
 
         upFile(file) {
             return new Promise((resolve, reject) => {
-                const fileRef = storageRef.child(`app/${file.name}`)
+                const uniqueIdForFileName = cuid()
+                const fileRef = storageRef.child(`app/${uniqueIdForFileName}-${file.name}`)
                 uploadTask = fileRef.put(file)
                 this.isUploading = true
 

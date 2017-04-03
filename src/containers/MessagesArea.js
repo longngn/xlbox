@@ -35,13 +35,14 @@ export default class MessagesArea extends React.Component {
                     message={message.content}
                 />
             case db.messageTypes.TEXT:
+            case db.messageTypes.FILE:
                 const { currentUser } = this.props
                 const isOwned = currentUser ?
                     message.senderId === currentUser.id :
                     false        
                 return <Message
                     key={message.id}
-                    message={message.content}
+                    message={message}
                     user={sender}
                     isOwned={isOwned}
                 />
