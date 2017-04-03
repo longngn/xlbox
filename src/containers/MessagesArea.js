@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MessageGroup from '../presenters/MessageGroup'
+import Notification from '../presenters/Notification'
 import styles from './MessagesArea.css'
 
 import * as db from '../config/db';
@@ -24,18 +25,29 @@ export default class MessagesArea extends React.Component {
         node.scrollIntoView()
     }
     renderMessages = (message) => {
-        const { currentUser } = this.props
-        const isOwned = currentUser ?
-            message.senderId === currentUser.id :
-            false
         const sender = this.props.getUser(message.senderId)
 
-        return <MessageGroup
-            key={message.id}
-            message={message.message}
-            user={sender}
-            isOwned={isOwned}
-        />
+        switch (message.type) {
+            case db.messageTypes.NOTIFICATION:
+                return <Notification 
+                    key={message.id}
+                    user={sender}
+                    message={message.content}
+                />
+            case db.messageTypes.TEXT:
+                const { currentUser } = this.props
+                const isOwned = currentUser ?
+                    message.senderId === currentUser.id :
+                    false        
+                return <MessageGroup
+                    key={message.id}
+                    message={message.content}
+                    user={sender}
+                    isOwned={isOwned}
+                />
+            default:
+                return <div></div>
+        }
     }
     render() {
         return (

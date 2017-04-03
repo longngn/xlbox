@@ -18,7 +18,14 @@ export default class App extends React.Component {
     componentDidMount() {
         onAuthStateChange(user => {
             this.setState({ user })
-            if (user) db.updateUser(user)
+            if (user) {
+                db.updateUser(user)
+                db.addMessage(
+                    db.messageTypes.NOTIFICATION,
+                    ' has joined the conversation.',
+                    user.id
+                )
+            }
         })
         db.onUsersDataChange(users => 
             this.setState({ allUsersById: users })

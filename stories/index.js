@@ -8,6 +8,7 @@ import TypingField from '../src/presenters/TypingField'
 import MessageBubble from '../src/presenters/MessageBubble'
 import LoginButton from '../src/presenters/LoginButton'
 import MessageGroup from '../src/presenters/MessageGroup'
+import Notification from '../src/presenters/Notification'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 injectTapEventPlugin()
@@ -48,3 +49,6 @@ storiesOf('MessageGroup', module)
         user={mockUser}
         isOwned={false}
     />)
+
+storiesOf('Notification', module)
+    .add('Comes online', () => <Notification user={mockUser}> has came online</Notification>)
