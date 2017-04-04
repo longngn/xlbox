@@ -36,6 +36,10 @@ export const onMessagesDataChange = (handler) => {
     })
 }
 
+export const onNewMessage = (handler) => {
+    messagesRef.on('child_added', snapshot => handler(snapshot.val()))
+}
+
 export const updateUser = (user) => {
     usersRef.update({
         [user.id]: user

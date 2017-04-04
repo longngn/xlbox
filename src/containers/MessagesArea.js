@@ -5,6 +5,7 @@ import Notification from '../presenters/Notification'
 import styles from './MessagesArea.css'
 
 import * as db from '../config/db';
+import * as browserNotification from '../config/browserNotification';
 
 export default class MessagesArea extends React.Component {
     state = {
@@ -13,6 +14,14 @@ export default class MessagesArea extends React.Component {
     componentDidMount() {
         db.onMessagesDataChange(newMessages => {
             this.setState({ messages: newMessages })
+        })
+        browserNotification.requestPermission()
+        db.onNewMessage(message => {
+            const { currentUser } = this.props
+            const sender = this.props.getUser(message.senderId)
+            const isOwned = currentUser && message.senderId === currentUser.id
+            if (!isOwned && browserNotification.isPageHidden)
+                browserNotification.newMessage(sender, message)
         })
         this.scrollToBottom()
     }
@@ -37,9 +46,7 @@ export default class MessagesArea extends React.Component {
             case db.messageTypes.TEXT:
             case db.messageTypes.FILE:
                 const { currentUser } = this.props
-                const isOwned = currentUser ?
-                    message.senderId === currentUser.id :
-                    false        
+                const isOwned = currentUser && message.senderId === currentUser.id
                 return <Message
                     key={message.id}
                     message={message}
@@ -47,7 +54,7 @@ export default class MessagesArea extends React.Component {
                     isOwned={isOwned}
                 />
             default:
-                return <div></div>
+                return <div key={message.id}></div>
         }
     }
     render() {
