@@ -6,6 +6,7 @@ import Dialog from 'material-ui/Dialog'
 import LinearProgress from 'material-ui/LinearProgress'
 
 import styles from './InputField.css'
+import * as auth from '../config/auth';
 import * as db from '../config/db';
 import * as storage from '../config/storage';
 
@@ -75,7 +76,7 @@ export default class InputField extends React.Component {
                         rowsMax={8}
                         autoFocus={true}
                     />
-                    <InputButtons onSend={this.sendMessage} onFileSelected={this.handleFileSelected} />
+                    <InputButtons onSend={this.sendMessage} onFileSelected={this.handleFileSelected} onLogOut={auth.logOut} />
 
                     <Dialog
                         actions={<FlatButton 

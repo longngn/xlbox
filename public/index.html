@@ -4,29 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./footer.css" />
     <script src="https://use.fontawesome.com/6e612a95c0.js"></script>
-    <!--
-      Notice the use of %PUBLIC_URL% in the tag above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>xlBox</title>
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=189001814930425";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start`.
-      To create a production bundle, use `npm run build`.
-    -->
+    
+    <footer>
+      <div class="footer-buttons">
+        <div class="fb-share-button" data-href="https://vulong23.github.io/xlbox/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvulong23.github.io%2Fxlbox%2F&amp;src=sdkpreparse">Share</a></div>
+        <a class="github-button" href="https://github.com/vulong23/xlbox" data-count-href="/vulong23/xlbox/stargazers" data-count-api="/repos/vulong23/xlbox#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star vulong23/xlbox on GitHub">Repo</a>
+      </div>
+      <p>© 2017 Developed by <a href="https://www.facebook.com/vu.long.355744">LongNLV</a> with <i class="fa fa-heartbeat"></i>. All Rights Reserved.</p>
+    </footer>
   </body>
 </html>

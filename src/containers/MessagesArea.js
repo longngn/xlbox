@@ -17,11 +17,10 @@ export default class MessagesArea extends React.Component {
         })
         browserNotification.requestPermission()
         db.onNewMessage(message => {
-            const { currentUser } = this.props
+            if (browserNotification.isPageVisible) return
+            
             const sender = this.props.getUser(message.senderId)
-            const isOwned = currentUser && message.senderId === currentUser.id
-            if (!isOwned && browserNotification.isPageHidden)
-                browserNotification.newMessage(sender, message)
+            browserNotification.newMessage(sender, message)
         })
         this.scrollToBottom()
     }

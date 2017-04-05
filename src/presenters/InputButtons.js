@@ -4,7 +4,7 @@ import IconButton from 'material-ui/IconButton'
 import styles from './InputButtons.css'
 import colors from '../config/colors'
 
-export default ({ onSend, onFileSelected }) => {
+export default ({ onSend, onFileSelected, onLogOut }) => {
     let fileInputNode
     const handleFileInput = (e) => {
         const file = e.target.files[0]
@@ -35,6 +35,13 @@ export default ({ onSend, onFileSelected }) => {
                 tooltip='Send message'
                 touch={true}
                 onTouchTap={onSend}
+            />
+            <IconButton 
+                iconClassName='fa fa-sign-out'
+                iconStyle={{ color: colors.ownedMessage }}
+                tooltip='Log out'
+                touch={true}
+                onTouchTap={onLogOut}
             />
         </div>
     )

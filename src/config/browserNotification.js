@@ -13,6 +13,8 @@ export const requestPermission = async () => {
 }
 
 export const newMessage = (user, message) => {
+    console.log(user);
+    console.log(message);
     switch (message.type) {
         case messageTypes.TEXT:
             pushNotification(user.displayName, message.content, user.avatarURL)
@@ -24,7 +26,7 @@ export const newMessage = (user, message) => {
     }
 }
 
-export let isPageHidden = false;
+export let isPageVisible = true;
 
 (() => {
     let hidden, visibilityChange; 
@@ -42,7 +44,7 @@ export let isPageHidden = false;
         return
     } else {
         document.addEventListener(visibilityChange, () => {
-            isPageHidden = document[hidden]
+            isPageVisible = !document[hidden]
         }, false);
     }
 })();

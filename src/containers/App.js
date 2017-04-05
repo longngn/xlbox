@@ -3,7 +3,6 @@ import Pager from 'material-ui/Paper'
 import Divider from 'material-ui/Divider'
 import InputField from './InputField'
 import MessagesArea from './MessagesArea'
-import Menu from './Menu'
 import Login from './Login'
 import styles from './App.css'
 
@@ -43,7 +42,6 @@ export default class App extends React.Component {
                     <Divider style={{ flex: '0 0 auto' }}/>
                     {user? <InputField user={user}/> : <Login />}
                     <Divider style={{ flex: '0 0 auto' }}/>
-                    <Menu isUserLoggedIn={Boolean(user)} />
                 </Pager>
             </div>
         )

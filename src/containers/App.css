@@ -1,18 +1,21 @@
 .container {
     display: flex;
     justify-content: center;
-    height: 100vh;
-}
-
-@media (min-width: 700px) {
-    .chatbox {
-        margin: 20px;
-    }
+    height: 90vh;
 }
 
 .chatbox {
     flex: 0 1 700px;
     display: flex;
     flex-direction: column;
+    margin: 15px;
+    margin-bottom: 25px;
 }
 
+@media (max-width: 700px) {
+    .container { 
+        height: 100vh; 
+        margin-bottom: 1em;
+    }
+    .chatbox { margin: 0; }
+}
