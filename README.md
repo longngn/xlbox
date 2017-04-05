@@ -74,7 +74,7 @@ And that's all, hopefully you will have fun tinkering with my Spaghetti code :v
 
 ## Deployment
 
-I used GitHub Pages for deploying, if you are going to be like me, just edit the ```homepage``` property in ```package.json``` and run ```npm run deploy```
+I used GitHub Pages for deploying, if you are going to be like me, just edit the ```homepage``` property in ```package.json``` and run ```npm run deploy```.  
 [For more information and other hosts](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages)
 
 ## Authors
@@ -83,7 +83,7 @@ I used GitHub Pages for deploying, if you are going to be like me, just edit the
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
