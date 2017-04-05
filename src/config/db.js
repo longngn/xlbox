@@ -2,7 +2,7 @@ import firebaseApp, { getServerTime } from './firebase'
 
 const database = firebaseApp.database()
 const messagesRef = database.ref('messages')
-const messagesByTimeRef = database.ref('messages').orderByChild('timestamp')
+const visibleMessagesRef = database.ref('messages').orderByChild('timestamp').limitToLast(100)
 const usersRef = database.ref('users')
 
 export const messageTypes = {
@@ -29,7 +29,7 @@ export const addMessage = async (type, content, senderId) => {
 }
 
 export const onMessagesDataChange = (handler) => {
-    messagesByTimeRef.on('value', snapshot => {
+    visibleMessagesRef.on('value', snapshot => {
         const messages = []
         snapshot.forEach(messageSnapshot => { messages.push(messageSnapshot.val()) })
         handler(messages)

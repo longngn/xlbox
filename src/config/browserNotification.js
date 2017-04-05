@@ -13,8 +13,6 @@ export const requestPermission = async () => {
 }
 
 export const newMessage = (user, message) => {
-    console.log(user);
-    console.log(message);
     switch (message.type) {
         case messageTypes.TEXT:
             pushNotification(user.displayName, message.content, user.avatarURL)
