@@ -15,7 +15,6 @@ A simple chatroom using React and Firebase.
     - **Authentication**: for getting user's data
     - **Realtime Database**: for syncing messages between multiple clients
     - **Storage**: to support sharing files
-    - **Cloud Function**: for getting timestamp from server
 * **GitHub Pages**: for deployment
 
 ## Getting Started
@@ -59,16 +58,7 @@ import * as firebase from 'firebase'
 export default firebase.initializeApp(config)
 ```
 
-Now let's ```npm start``` again, our project ran smoothly as ever. But there is still a problem.
-
-I export a function ```getServerTime = () => Promise``` from ```firebase.js``` and use it to add **exact** timestamp to the dispatched messages (because client's system time could be faulty). There are many ways to get timestamp from server. One is to use a [third-party time API](https://timezonedb.com/api). But I will just create my own API from Firebase's cutting-edge feature [Cloud Function](https://firebase.google.com/features/functions/).
-
-I will leave the instructions regarding creating and deploying function in [the official Docs' hand](https://firebase.google.com/docs/functions/get-started). You can find the source code at ```./functions/index.js```. But really it will be just as simple like this:
-```bash
-npm install -g firebase-tools
-firebase login
-firebase deploy --only functions
-```
+Now let's ```npm start``` again, our project ran smoothly as ever.
 
 And that's all, hopefully you will have fun tinkering with my Spaghetti code :v
 
@@ -77,9 +67,10 @@ And that's all, hopefully you will have fun tinkering with my Spaghetti code :v
 I used GitHub Pages for deploying, if you are going to be like me, just edit the ```homepage``` property in ```package.json``` and run ```npm run deploy```.  
 [For more information and other hosts](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages)
 
-## Authors
+## Contributors
 
 * **Nguyen Le Vu Long** - *Initial work* - [vulong23](https://github.com/vulong23)
+* **Nguyen Dac Sang** - [dacsang97](https://github.com/dacsang97)
 
 ## License
 

@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import firebaseApp, { getServerTime } from './firebase'
+import firebaseApp from './firebase'
 
 const database = firebaseApp.database()
 const messagesRef = database.ref('messages')
