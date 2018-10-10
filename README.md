@@ -1,4 +1,4 @@
-# eXciting Laughing Box
+# eXciting Laughing Bo
 
 A.k.a xlBox.  
 A simple chatroom using React and Firebase.  
