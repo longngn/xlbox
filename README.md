@@ -8,7 +8,7 @@ A simple chatroom using React and Firebase.
 
 * **React**
     - **create-react-app**: for boilerplating Babel, Webpack, etc.
-    - **Material-UI**: for most of the UI components
+    - **Material-UI**: for most of the UI componentfds
     - **CSS Modules**: for scoped CSS
     - **FontAwesome**: for awesome icons
 * **Firebase**:
