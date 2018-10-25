@@ -49,7 +49,7 @@ var config = {
     storageBucket: "my-project-id.appspot.com",
     messagingSenderId: "664395*****"
   }
-```
+```fdsafdas
 
 Next, create `firebase.js` in `./src/config`
 ```javascript
