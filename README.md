@@ -2,7 +2,7 @@
 
 A.k.a xlBox.  
 A simple chatroom using React and Firebase.  
-## [Live demo](https://vulong23.github.io/xlbox/)
+## [Live demo](https://longngn.github.io/xlbox/)
 
 ## Built With
 
